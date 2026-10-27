@@ -1,0 +1,8 @@
+<footer class="site-footer">
+  {{ with site.Params.links }}
+  <ul class="links">
+    {{ range . }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+  <p>© {{ now.Year }} {{ site.Params.name }}</p>
+</footer>

@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  {{ with .Pages }}
+    <ul class="entries{{ if eq $.Section "blog" }} dated{{ end }}">{{ range . }}{{ partial "entry.html" . }}{{ end }}</ul>
+  {{ else }}
+    <p class="empty">Nothing here yet. Add a file with <code>hugo new {{ .Section }}/title.md</code>.</p>
+  {{ end }}
+</article>
+{{ end }}

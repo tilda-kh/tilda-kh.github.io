@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  {{ if eq .Section "blog" }}<p class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time></p>{{ end }}
+  {{ if eq .Section "" }}{{ with .Lastmod }}{{ if $.Params.showUpdated }}<p class="meta">Last updated {{ .Format "2 January 2006" }}</p>{{ end }}{{ end }}{{ end }}
+  <div class="prose">{{ .Content }}</div>
+  {{ if in (slice "blog" "projects") .Section }}{{ with .Parent }}<p class="back"><a href="{{ .RelPermalink }}">Back to {{ lower .Title }}</a></p>{{ end }}{{ end }}
+</article>
+{{ end }}
